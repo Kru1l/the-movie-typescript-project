@@ -1,0 +1,17 @@
+.Header {
+    width: 99%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #030441;
+    border-radius: 8px;
+    margin-top: 9px;
+}
+
+.Header > a {
+    text-decoration: none;
+    margin: 2vw;
+    font-size: 25px;
+}

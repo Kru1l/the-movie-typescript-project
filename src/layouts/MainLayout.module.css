@@ -1,0 +1,13 @@
+body {
+    padding: 0;
+    background: url(/public/images/wallpaper2you_381173.jpg) 0 0/100% fixed;
+}
+
+.MainLayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+}

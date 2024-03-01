@@ -1,0 +1,15 @@
+.MovieCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-bottom: 5vh;
+}
+
+.MovieCard > p {
+    max-width: 250px;
+}
+
+.MovieCard > img {
+    width: 250px;
+    border-radius: 10px;
+}
