@@ -8,12 +8,14 @@ const movie = '/movie';
 
 const genre = '/genre';
 const list = '/list';
+const with_genres = '?with_genres='
 
 
 const urls = {
     movies: {
         base: discover + movie,
-        byId: (id: number): string => `${movie}/${id}`
+        byId: (id: number): string => `${movie}/${id}`,
+        byGenreId: (id: number): string => `${discover}/${movie}${with_genres}${id}`
     },
     genres: genre + movie + list,
 };

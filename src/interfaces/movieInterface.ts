@@ -15,7 +15,7 @@ interface IMovie {
     vote_count: number
 }
 
-interface IData {
+interface IMovieData {
     page: number,
     results: IMovie[],
     total_pages: number,
@@ -24,5 +24,5 @@ interface IData {
 
 export type {
     IMovie,
-    IData
+    IMovieData
 };

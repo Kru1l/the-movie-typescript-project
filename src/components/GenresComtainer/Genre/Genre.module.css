@@ -1,0 +1,34 @@
+.Genre {
+    width: 9vw;
+    height: 7vh;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 15px;
+
+    margin: 2px 2px 7px;
+    cursor: pointer;
+}
+
+.Genre > a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(128, 0, 128, 0.4);
+    backdrop-filter: blur(4px);
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+
+    color: white;
+}
+
+.Genre > a[class='active'] {
+    background: goldenrod;
+    color: black;
+}

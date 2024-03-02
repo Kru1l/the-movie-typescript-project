@@ -1,46 +1,16 @@
 import {useEffect, useState} from 'react';
-import {createTheme, Pagination, Stack, ThemeProvider} from "@mui/material";
+import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
 import styles from './MoviesList.module.css';
-import {IData} from "../../../interfaces";
+import {IMovieData} from "../../../interfaces";
 import {MovieCard} from "../MovieCard/MovieCard";
-import {usePageQuery} from "../../../hooks";
+import {usePageQuery, useThemeContext} from "../../../hooks";
 import {movieService} from "../../../services";
 
 const MoviesList = () => {
-    const [moviesRes, setMoviesRes] = useState<IData>(null);
-
+    const [moviesRes, setMoviesRes] = useState<IMovieData>(null);
     const {page, pageChange} = usePageQuery();
-    
-    const darkTheme = createTheme({
-        palette: {
-            mode: 'dark',
-            primary: {
-                main: '#ffffff',
-            },
-            secondary: {
-                main: '#ff0000',
-            },
-        },
-    });
-
-    const lightTheme = createTheme({
-        palette: {
-            mode: 'light',
-            primary: {
-                main: '#3f51b5', // основний колір для світлої теми
-            },
-            secondary: {
-                main: '#f50057', // додатковий колір для світлої теми
-            },
-        },
-    });
-
-    const [theme, setTheme] = useState(darkTheme);
-
-    const toggleTheme = (): void => {
-        setTheme(theme !== lightTheme ? lightTheme : darkTheme);
-    };
+    const {theme, setTheme, toggleTheme} = useThemeContext();
 
     useEffect(() => {
         movieService.getAll(`${page}`).then(({data}) => setMoviesRes(data))
@@ -49,19 +19,21 @@ const MoviesList = () => {
 
     return (
         <div className={styles.MoviesList}>
-            {moviesRes?.results.map(movie => <MovieCard
-                key={movie.id}
-                movie={movie}
-            />)}
+            <div className={styles.movies}>
+                {moviesRes?.results.map(movie => <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                />)}
+            </div>
 
-            <Stack spacing={2} color={"white"} borderColor={"red"}>
+            {moviesRes?.total_pages > 1 && <Stack spacing={2} color={"white"} borderColor={"red"}>
                 <ThemeProvider theme={theme}>
-                    <button onClick={toggleTheme}>Switch</button>
-                    <Pagination count={500} showFirstButton showLastButton page={+page} onChange={pageChange}
-                                color={"primary"}
-                                variant="outlined"/>
+                {/*<button onClick={toggleTheme}>Switch</button>*/}
+                <Pagination count={500} showFirstButton showLastButton page={+page} onChange={pageChange}
+                            color={"primary"}
+                            variant="outlined"/>
                 </ThemeProvider>
-            </Stack>
+            </Stack>}
         </div>
     );
 };

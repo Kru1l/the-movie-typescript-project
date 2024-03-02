@@ -1,19 +1,15 @@
-.MoviesList {
+.MoviesOfG {
     width: 100%;
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
     padding-bottom: 3vh;
     color: white;
 }
 
-.darkTheme {
-    background: white;
-}
-
-.movies {
+.moviesG {
     width: 100%;
     display: flex;
     flex-flow: wrap;

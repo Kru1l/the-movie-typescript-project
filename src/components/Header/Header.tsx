@@ -1,22 +1,31 @@
 import {NavLink} from "react-router-dom";
-import {FormControlLabel} from "@mui/material";
+import {FormControlLabel, ThemeProvider} from "@mui/material";
 
 import styles from './Header.module.css';
-import {useMuiSwitch} from "../../hooks";
+import {useMuiSwitch, useThemeContext} from "../../hooks";
 
 const Header = () => {
     const {MaterialUISwitch} = useMuiSwitch();
+    const {theme, setTheme, toggleTheme, isDarkMode, setIsDarkMode} = useThemeContext();
+
+    // if (!isDarkMode) {
+    //     document.body.classList.add('light');
+    // } else {
+    //     document.body.classList.remove('light');
+    // }
 
     return (
-        <div className={styles.Header}>
+        <div className={`${styles.Header}  ${!isDarkMode && styles.light}`}>
             <NavLink to={'/'}>Home</NavLink>
             <NavLink to={'/movies'}>Movies</NavLink>
-            <NavLink to={''}>Genres</NavLink>
+            <NavLink to={'/genres'}>Genres</NavLink>
 
-            <FormControlLabel
-                control={<MaterialUISwitch sx={{m: 1}} defaultChecked/>}
-                label="Dark"
-            />
+            <ThemeProvider theme={theme}>
+                <FormControlLabel
+                    control={<MaterialUISwitch sx={{m: 1,}} checked={isDarkMode} onChange={toggleTheme}/>}
+                    label={isDarkMode ? 'Dark' : 'Light'}
+                />
+            </ThemeProvider>
         </div>
     );
 };
