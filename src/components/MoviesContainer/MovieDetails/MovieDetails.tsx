@@ -48,7 +48,7 @@ const MovieDetails: FC<IProps> = ({movieDetails}) => {
                     </Stack>
 
                     <p>{overview}</p>
-                    <p>Studio {production_companies[0].name}</p>
+                    <p>Studio {production_companies[0]?.name}</p>
                 </section>
             </main>
         </div>

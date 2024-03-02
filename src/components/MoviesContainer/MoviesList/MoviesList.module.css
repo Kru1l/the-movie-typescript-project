@@ -1,23 +1,24 @@
 .MoviesList {
-    width: 100%;
+    width: 97vw;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
+    box-sizing: border-box;
     align-items: center;
-
-    padding-bottom: 3vh;
+    padding: 3vh 0;
     color: white;
-}
-
-.darkTheme {
-    background: white;
 }
 
 .movies {
     width: 100%;
     display: flex;
     flex-flow: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    box-sizing: border-box;
     align-items: center;
     padding: 3vh 0 0;
+}
+
+.light {
+    color: black;
 }

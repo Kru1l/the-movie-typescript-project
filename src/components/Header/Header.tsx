@@ -3,29 +3,36 @@ import {FormControlLabel, ThemeProvider} from "@mui/material";
 
 import styles from './Header.module.css';
 import {useMuiSwitch, useThemeContext} from "../../hooks";
+import {SearchForm} from "../SearchContainer";
 
 const Header = () => {
     const {MaterialUISwitch} = useMuiSwitch();
-    const {theme, setTheme, toggleTheme, isDarkMode, setIsDarkMode} = useThemeContext();
-
-    // if (!isDarkMode) {
-    //     document.body.classList.add('light');
-    // } else {
-    //     document.body.classList.remove('light');
-    // }
+    const {theme, toggleTheme, isDarkMode} = useThemeContext();
 
     return (
         <div className={`${styles.Header}  ${!isDarkMode && styles.light}`}>
-            <NavLink to={'/'}>Home</NavLink>
-            <NavLink to={'/movies'}>Movies</NavLink>
-            <NavLink to={'/genres'}>Genres</NavLink>
+
+            <img className={styles.logo} src={'https://www.plex.tv/wp-content/themes/plex/assets/img/plex-logo.svg'}
+                 alt={'Plex.tv'}/>
+
+            <section className={styles.search}>
+                <SearchForm/>
+            </section>
+
+            <nav>
+                <NavLink to={'/'}>Home</NavLink>
+                <NavLink to={'/movies'}>Movies</NavLink>
+                <NavLink to={'/genres'}>Genres</NavLink>
+            </nav>
 
             <ThemeProvider theme={theme}>
                 <FormControlLabel
-                    control={<MaterialUISwitch sx={{m: 1,}} checked={isDarkMode} onChange={toggleTheme}/>}
-                    label={isDarkMode ? 'Dark' : 'Light'}
+                    control={<MaterialUISwitch checked={isDarkMode} onChange={toggleTheme}/>}
+                    label={''}
                 />
             </ThemeProvider>
+
+            <img className={styles.user} src={'https://img.icons8.com/?size=48&id=AZazdsitsrgg&format=png'} alt="User"/>
         </div>
     );
 };

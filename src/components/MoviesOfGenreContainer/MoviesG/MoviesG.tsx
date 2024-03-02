@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {Pagination, Stack} from "@mui/material";
+import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
 import styles from './MoviesG.module.css';
 import {movieService} from "../../../services";
@@ -13,16 +13,16 @@ const MoviesG = () => {
     const {page, pageChange} = usePageQuery();
     const {id} = useParams();
 
-    console.log(genreMoviesRes?.results)
+    console.log(page)
 
     useEffect(() => {
-        movieService.getByGenreId(`${page}`, +id).then(({data}) => setGenreMoviesRes(data))
+        movieService.getByGenreId(`${page ? page : 1}`, +id).then(({data}) => setGenreMoviesRes(data))
             .catch((e) => console.error(e));
     }, [id, page]);
 
     return (
-        <div className={styles.MoviesOfG}>
-            <div className={styles.moviesG}>
+        <div className={styles.MoviesG}>
+            <div className={styles.movies}>
                 {genreMoviesRes?.results && genreMoviesRes.results.map(movie =>
                     <MovieG
                         key={movie.id}
@@ -30,14 +30,16 @@ const MoviesG = () => {
                     />)}
             </div>
 
-            {genreMoviesRes?.total_pages > 1 && <Stack spacing={2} color={"white"} borderColor={"red"}>
-                {/*<ThemeProvider theme={''}>*/}
-                {/*<button onClick={toggleTheme}>Switch</button>*/}
-                <Pagination count={500} showFirstButton showLastButton page={+page} onChange={pageChange}
-                            color={"primary"}
-                            variant="outlined"/>
-                {/*</ThemeProvider>*/}
-            </Stack>}
+            {genreMoviesRes?.total_pages > 1 &&
+                <ThemeProvider theme={''}>
+                    <Stack spacing={2} color={"white"} borderColor={"red"} width={"100%"}
+                           sx={{justifyContent: 'center', alignItems: 'center'}}>
+                        <Pagination count={500} showFirstButton showLastButton page={page ? +page : 1}
+                                    onChange={pageChange}
+                                    color={"primary"}
+                                    variant="outlined"/>
+                    </Stack>
+                </ThemeProvider>}
         </div>
     );
 };

@@ -10,6 +10,9 @@ const genre = '/genre';
 const list = '/list';
 const with_genres = '?with_genres='
 
+const search = '/search';
+const query = '?query=';
+
 
 const urls = {
     movies: {
@@ -18,6 +21,7 @@ const urls = {
         byGenreId: (id: number): string => `${discover}/${movie}${with_genres}${id}`
     },
     genres: genre + movie + list,
+    search: (name: string) =>  search + movie + query + name
 };
 
 export {

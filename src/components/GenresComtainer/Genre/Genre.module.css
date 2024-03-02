@@ -1,10 +1,10 @@
 .Genre {
-    width: 9vw;
+    width: 8.7vw;
     height: 7vh;
     justify-content: center;
     align-items: center;
 
-    border-radius: 15px;
+    border-radius: 12px;
 
     margin: 2px 2px 7px;
     cursor: pointer;
@@ -22,13 +22,13 @@
     border-radius: 15px;
     text-decoration: none;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
 
     color: white;
 }
 
 .Genre > a[class='active'] {
-    background: goldenrod;
+    background: #e5a00d;
     color: black;
 }

@@ -1,7 +1,6 @@
-import {createContext, FC, PropsWithChildren, useState} from 'react';
+import {createContext, FC, PropsWithChildren, useEffect, useState} from 'react';
 import {createTheme, ThemeProvider} from "@mui/material";
 
-const Context = createContext<{}>(null);
 const ThemeContext = createContext(null);
 
 interface IProps extends PropsWithChildren {
@@ -18,10 +17,6 @@ const ContextProvider: FC<IProps> = ({children}) => {
             },
             secondary: {
                 main: '#ff0000',
-            },
-            background: {
-                default: "url(/public/images/dark-background.jpg)",
-                paper: '#333333',
             }
         },
     });
@@ -34,36 +29,35 @@ const ContextProvider: FC<IProps> = ({children}) => {
             },
             secondary: {
                 main: '#f50057', // додатковий колір для світлої теми
-            },
-            background: {
-                default: '#000000',
-                paper: '#333333',
             }
         },
     });
 
     const [theme, setTheme] = useState(darkTheme);
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(
+        JSON.parse(localStorage.getItem('isDarkMode')) || null
+    );
 
+    useEffect(() => {
+        localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+        setTheme(isDarkMode ? darkTheme : lightTheme);
+        document.body.classList.toggle('light', !isDarkMode);
+    }, [isDarkMode]);
 
     const toggleTheme = (): void => {
         setIsDarkMode(!isDarkMode);
-        setTheme(isDarkMode ? lightTheme : darkTheme);
     };
 
     return (
-        <Context.Provider value={'#'}>
             <ThemeContext.Provider value={{theme, setTheme, toggleTheme, isDarkMode, setIsDarkMode}}>
                 <ThemeProvider theme={theme}>
                     {children}
                 </ThemeProvider>
             </ThemeContext.Provider>
-        </Context.Provider>
     );
 };
 
 export {
     ContextProvider,
-    ThemeContext,
-    Context
+    ThemeContext
 };

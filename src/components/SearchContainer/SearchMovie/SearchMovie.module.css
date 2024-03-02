@@ -1,4 +1,4 @@
-.MovieCard {
+.SearchMovie {
     width: 18vw;
     height: 65vh;
     display: flex;
@@ -15,22 +15,22 @@
 
 }
 
-.MovieCard:hover {
+.SearchMovie:hover {
     transform: scale(1.1);
     transform-origin: center center;
 }
 
-.MovieCard > p {
+.SearchMovie > p {
     text-align: center;
     font-weight: 700;
     font-size: 22px;
 }
 
-.MovieCard > img {
+.SearchMovie > img {
     width: 250px;
     border-radius: 10px;
 }
 
-.MovieCard > img:hover {
+.SearchMovie > img:hover {
     border: solid 2px white;
 }

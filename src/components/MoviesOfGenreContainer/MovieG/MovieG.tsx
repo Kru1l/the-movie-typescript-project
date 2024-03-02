@@ -1,9 +1,9 @@
-import styles from './MovieG.module.css';
-
 import {FC} from 'react';
+import {useNavigate} from "react-router-dom";
+
+import styles from './MovieG.module.css';
 import {posterURL} from "../../../constans";
 import {IMovie} from "../../../interfaces";
-import {useNavigate} from "react-router-dom";
 
 interface IProps {
     movie: IMovie

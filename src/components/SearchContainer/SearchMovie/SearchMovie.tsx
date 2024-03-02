@@ -1,29 +1,29 @@
 import {FC} from 'react';
 import {useNavigate} from "react-router-dom";
 
-import styles from './MovieCard.module.css';
-import {IMovie} from "../../../interfaces";
+import styles from './SearchMovie.module.css';
 import {posterURL} from "../../../constans";
+import {IMovie} from "../../../interfaces";
 
 interface IProps {
-    movie: IMovie
+    movie: IMovie;
 }
 
-const MovieCard: FC<IProps> = ({movie}) => {
+const SearchMovie: FC<IProps> = ({movie}) => {
     const {id, title, poster_path} = movie;
     const navigate = useNavigate();
 
     const toDetails = (): void => {
+        document.forms.namedItem('form').reset();
         navigate(`/movies/${id}`)
     };
 
     return (
-        <div className={styles.MovieCard} onClick={toDetails}
-        >
+        <div className={styles.SearchMovie} onClick={toDetails}>
             <img src={`${posterURL}${poster_path}`} alt={title}/>
             <p>{title}</p>
         </div>
     );
 };
 
-export {MovieCard};
+export {SearchMovie};

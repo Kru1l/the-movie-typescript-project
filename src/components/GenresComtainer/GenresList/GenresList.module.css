@@ -1,8 +1,10 @@
 .Genres {
+    width: 93vw;
     display: flex;
     flex-flow: wrap;
     justify-content: space-between;
     align-items: center;
     color: white;
     padding: 8px 6px 0;
+    transition: 1s;
 }
