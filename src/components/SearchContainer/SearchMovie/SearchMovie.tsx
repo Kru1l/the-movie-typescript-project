@@ -15,7 +15,7 @@ const SearchMovie: FC<IProps> = ({movie}) => {
 
     const toDetails = (): void => {
         document.forms.namedItem('form').reset();
-        navigate(`/movies/${id}`)
+        navigate(`/movies/${id}`);
     };
 
     return (

@@ -1,19 +1,12 @@
-import {FC} from 'react';
 import {useNavigate} from "react-router-dom";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 import styles from './SearchForm.module.css';
 import {IQuery} from "../../../interfaces";
 
-interface IProps {
 
-}
-
-const SearchForm: FC<IProps> = () => {
-    const {register, handleSubmit, reset} =
-        useForm<IQuery>({
-            mode: "onChange",
-        });
+const SearchForm = () => {
+    const {register, handleSubmit} = useForm<IQuery>();
     const navigate = useNavigate();
 
     const search: SubmitHandler<IQuery> = ({query}): void => {

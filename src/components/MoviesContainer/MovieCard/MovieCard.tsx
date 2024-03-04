@@ -14,12 +14,11 @@ const MovieCard: FC<IProps> = ({movie}) => {
     const navigate = useNavigate();
 
     const toDetails = (): void => {
-        navigate(`/movies/${id}`)
+        navigate(`/movies/${id}`);
     };
 
     return (
-        <div className={main.Movie} onClick={toDetails}
-        >
+        <div className={main.Movie} onClick={toDetails}>
             <img src={`${posterURL}${poster_path}`} alt={title}/>
             <p>{title}</p>
         </div>

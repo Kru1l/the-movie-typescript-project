@@ -2,18 +2,19 @@ import {useEffect, useState} from 'react';
 import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
 import main from '../../main.module.css';
-import {IMovieData} from "../../../interfaces";
 import {MovieCard} from "../MovieCard/MovieCard";
+import {IMovieData} from "../../../interfaces";
 import {usePageQuery, useThemeContext} from "../../../hooks";
 import {movieService} from "../../../services";
 
 const MoviesList = () => {
     const [moviesRes, setMoviesRes] = useState<IMovieData>(null);
-    const {isDarkMode} = useThemeContext();
+    const {isDarkMode, setIsBackOn} = useThemeContext();
     const {page, pageChange} = usePageQuery();
     const {theme} = useThemeContext();
 
     useEffect(() => {
+        setIsBackOn(true);
         document.forms.namedItem('form').reset();
         movieService.getAll(`${page}`).then(({data}) => setMoviesRes(data))
             .catch((e) => console.error(e));

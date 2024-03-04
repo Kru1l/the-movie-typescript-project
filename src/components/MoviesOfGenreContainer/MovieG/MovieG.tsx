@@ -15,7 +15,7 @@ const MovieG: FC<IProps> = ({movie}) => {
 
     const toDetails = (): void => {
         navigate(`/movies/${id}`);
-    }
+    };
 
     return (
         <div className={main.Movie} onClick={toDetails}>

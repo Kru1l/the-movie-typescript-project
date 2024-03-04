@@ -1,18 +1,14 @@
-import {FC, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
 import main from '../../main.module.css';
 import {IMovieData} from "../../../interfaces";
-import {usePageQuery, useThemeContext} from "../../../hooks";
 import {SearchMovie} from "../SearchMovie/SearchMovie";
+import {usePageQuery, useThemeContext} from "../../../hooks";
 import {movieService, searchService} from "../../../services";
 
-interface IProps {
-
-}
-
-const SearchMovies: FC<IProps> = () => {
+const SearchMovies = () => {
     const [searchRes, setSearchRes] = useState<IMovieData>(null);
     const {theme, isDarkMode} = useThemeContext();
     const {page, pageChange} = usePageQuery();

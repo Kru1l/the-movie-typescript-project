@@ -3,14 +3,14 @@ import {useParams} from "react-router-dom";
 import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
 import main from '../../main.module.css';
+import {MovieG} from "../MovieG/MovieG";
 import {movieService} from "../../../services";
 import {IMovieData} from "../../../interfaces";
 import {usePageQuery, useThemeContext} from "../../../hooks";
-import {MovieG} from "../MovieG/MovieG";
 
 const MoviesG = () => {
     const [genreMoviesRes, setGenreMoviesRes] = useState<IMovieData>(null);
-    const {isDarkMode} = useThemeContext();
+    const {isDarkMode, theme} = useThemeContext();
     const {page, pageChange} = usePageQuery();
     const {id} = useParams();
 
@@ -30,7 +30,7 @@ const MoviesG = () => {
             </div>
 
             {genreMoviesRes?.total_pages > 1 &&
-                <ThemeProvider theme={''}>
+                <ThemeProvider theme={theme}>
                     <Stack spacing={2} color={"white"} borderColor={"red"} width={"100%"}
                            sx={{justifyContent: 'center', alignItems: 'center'}}>
                         <Pagination count={500} showFirstButton showLastButton page={page ? +page : 1}

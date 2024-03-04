@@ -24,6 +24,7 @@ interface IMovieDetails {
     release_date: string,
     revenue: number,
     runtime: number,
+    name: string,
     spoken_languages: ISpoken_languages[],
     status: string,
     tagline: string,

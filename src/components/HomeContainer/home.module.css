@@ -1,0 +1,70 @@
+.Wrap {
+    width: 97vw;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    color: white;
+}
+
+.title {
+    width: 84vw;
+    height: 6vh;
+    background: rgba(219, 159, 61, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    padding: 0 3vw;
+    font-weight: 800;
+}
+
+.movies {
+    width: 84vw;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 3vh 0 0 0;
+}
+
+.light {
+    color: black;
+}
+
+/*-----------------------------------------*/
+
+.Movie {
+    width: 16vw;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+
+    margin-bottom: 5vh;
+    cursor: pointer;
+}
+
+.Movie:hover {
+    transform: scale(1.1);
+    transform-origin: center center;
+}
+
+.Movie > p {
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.Movie > img {
+    border-radius: 10px;
+}
+
+.Movie > img:hover {
+    border: solid 2px white;
+}

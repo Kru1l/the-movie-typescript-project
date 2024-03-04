@@ -8,11 +8,6 @@ html {
     box-sizing: inherit;
 }
 
-body * {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font: normal 100%/1.15 "Merriweather", serif;
 }
@@ -34,26 +29,26 @@ body {
     transparent url("https://www.dropbox.com/s/w7qqrcvhlx3pwnf/desktop-pc.png?raw=1") no-repeat top 13em center/128px 128px;
 }
 
-h1,
-p:not(:last-of-type) {
+.box h1,
+.box p:not(:last-of-type) {
     text-shadow: 0 0 6px #216f79;
 }
 
-h1 {
+.box h1 {
     margin: 0 0 1rem 0;
     font-size: 8em;
 }
 
-p {
-    margin-bottom: 0.5em;
+.box p {
+    margin: 1vh;
     font-size: 3em;
 }
 
-p:first-of-type {
+.box p:first-of-type {
     margin-top: 4em;
 }
 
-p > a {
+.box p > a {
     border-bottom: 1px dashed #216f79;
     font-style: italic;
     text-decoration: none;
@@ -61,10 +56,10 @@ p > a {
     cursor: pointer;
 }
 
-p > a:hover {
+.box p > a:hover {
     text-shadow: 0 0 6px #216f79;
 }
 
-p img {
+.box p img {
     vertical-align: bottom;
 }

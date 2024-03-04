@@ -1,24 +1,32 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
-import styles from './MovieDetailsPage.module.css';
 import {MovieDetails} from "../../components";
 import {IMovieDetails} from "../../interfaces";
-import {movieDetailsService} from "../../services";
+import {movieService, tvService} from "../../services";
+import {useAppLocation, useThemeContext} from "../../hooks";
 
 
 const MovieDetailsPage = () => {
     const [movieDetails, setMovieDetails] = useState<IMovieDetails>(null);
+    const {setIsBackOn} = useThemeContext();
+    const {state} = useAppLocation<{ status: boolean }>();
     const {id} = useParams();
 
     useEffect(() => {
-        movieDetailsService.getById(+id).then(({data}) => setMovieDetails(data))
-            .catch((e) => console.error(e))
+        setIsBackOn(true);
+        if (state?.status) {
+            tvService.getById(+id).then(({data}) => setMovieDetails(data))
+                .catch((e) => console.error(e));
+        } else {
+            movieService.getById(+id).then(({data}) => setMovieDetails(data))
+                .catch((e) => console.error(e));
+        }
     }, [id]);
 
     return (
-        <div className={styles.DetailsPage}>
-            {movieDetails && <MovieDetails movieDetails={movieDetails}/>}
+        <div>
+            {movieDetails && <MovieDetails movieDetails={movieDetails} status={state?.status}/>}
         </div>
     );
 };

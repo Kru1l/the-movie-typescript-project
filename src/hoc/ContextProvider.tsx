@@ -1,10 +1,9 @@
 import {createContext, FC, PropsWithChildren, useEffect, useState} from 'react';
-import {createTheme, ThemeProvider} from "@mui/material";
+import {createTheme} from "@mui/material";
 
 const ThemeContext = createContext(null);
 
 interface IProps extends PropsWithChildren {
-
 }
 
 const ContextProvider: FC<IProps> = ({children}) => {
@@ -14,11 +13,8 @@ const ContextProvider: FC<IProps> = ({children}) => {
             mode: 'dark',
             primary: {
                 main: '#DB9F3DFF',
-            },
-            secondary: {
-                main: '#ff0000',
             }
-        },
+        }
     });
 
     const lightTheme = createTheme({
@@ -26,17 +22,15 @@ const ContextProvider: FC<IProps> = ({children}) => {
             mode: 'light',
             primary: {
                 main: '#DB9F3DFF', // основний колір для світлої теми
-            },
-            secondary: {
-                main: '#f50057', // додатковий колір для світлої теми
             }
         },
     });
 
     const [theme, setTheme] = useState(darkTheme);
-    const [isDarkMode, setIsDarkMode] = useState(
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(
         JSON.parse(localStorage.getItem('isDarkMode')) || null
     );
+    const [isBackOn, setIsBackOn] = useState<boolean>(null);
 
     useEffect(() => {
         localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
@@ -49,10 +43,8 @@ const ContextProvider: FC<IProps> = ({children}) => {
     };
 
     return (
-        <ThemeContext.Provider value={{theme, setTheme, toggleTheme, isDarkMode, setIsDarkMode}}>
-            <ThemeProvider theme={theme}>
-                {children}
-            </ThemeProvider>
+        <ThemeContext.Provider value={{theme, setTheme, toggleTheme, isDarkMode, setIsDarkMode, isBackOn, setIsBackOn}}>
+            {children}
         </ThemeContext.Provider>
     );
 };

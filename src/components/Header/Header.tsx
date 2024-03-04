@@ -1,4 +1,4 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {FormControlLabel, ThemeProvider} from "@mui/material";
 
 import styles from './Header.module.css';
@@ -7,7 +7,8 @@ import {SearchForm} from "../SearchContainer";
 
 const Header = () => {
     const {MaterialUISwitch} = useMuiSwitch();
-    const {theme, toggleTheme, isDarkMode} = useThemeContext();
+    const navigate = useNavigate();
+    const {theme, toggleTheme, isDarkMode, isBackOn} = useThemeContext();
 
     return (
         <div className={`${styles.Header}  ${!isDarkMode && styles.light}`}>
@@ -19,8 +20,12 @@ const Header = () => {
                 <SearchForm/>
             </section>
 
+            {isBackOn &&
+                <button className={`${styles.back} ${!isDarkMode && styles.light}`} onClick={() => navigate(-1)}>Back
+                </button>}
+
             <nav>
-                <NavLink to={'/'}>Home</NavLink>
+                <NavLink to={'/home'}>Home</NavLink>
                 <NavLink to={'/movies'}>Movies</NavLink>
                 <NavLink to={'/genres'}>Genres</NavLink>
             </nav>
