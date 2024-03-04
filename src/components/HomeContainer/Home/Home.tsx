@@ -10,7 +10,7 @@ const Home = () => {
 
     useEffect(() => {
         setIsBackOn(null);
-    }, []);
+    }, [setIsBackOn]);
 
     return (
         <div>

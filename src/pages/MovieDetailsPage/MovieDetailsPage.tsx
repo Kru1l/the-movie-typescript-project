@@ -22,7 +22,7 @@ const MovieDetailsPage = () => {
             movieService.getById(+id).then(({data}) => setMovieDetails(data))
                 .catch((e) => console.error(e));
         }
-    }, [id]);
+    }, [id, state, setIsBackOn]);
 
     return (
         <div>

@@ -18,7 +18,7 @@ const MoviesList = () => {
         document.forms.namedItem('form').reset();
         movieService.getAll(`${page}`).then(({data}) => setMoviesRes(data))
             .catch((e) => console.error(e));
-    }, [page, theme]);
+    }, [page, theme, setIsBackOn]);
 
     return (
         <div className={`${main.Wrap}  ${!isDarkMode && main.light}`}>

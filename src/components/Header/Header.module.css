@@ -42,6 +42,7 @@ section {
     font-weight: 700;
     text-align: center;
     margin-left: 0.5vw;
+    cursor: pointer;
     color: white;
 }
 

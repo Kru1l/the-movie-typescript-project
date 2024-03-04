@@ -15,7 +15,7 @@ const GenresList = () => {
         document.forms.namedItem('form').reset();
         genreService.getAll().then(({data}) => setGenres(data.genres))
             .catch((e) => console.error(e));
-    }, []);
+    }, [setIsBackOn]);
 
     return (
         <div className={`${styles.Genres} ${!isDarkMode && styles.light}`}>
