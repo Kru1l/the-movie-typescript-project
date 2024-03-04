@@ -5,13 +5,13 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: url(/public/images/dark-background.jpg) 0 0/100% fixed;
+    background: url(/public/images/23985194_6895380.jpg) 0 0/100% fixed;
     padding-top: 10vh;
-
+    transition: 1s;
 }
 
 .light {
-    background: #acd4fa;
+    background: url('https://img.freepik.com/premium-vector/abstract-white-gold-background-poster-with-dynamic-technology-network_29865-2465.jpg?w=1380') 0 0/120% fixed;
     color: black;
     transition: 1s;
 }

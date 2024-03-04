@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {useNavigate} from "react-router-dom";
 
-import styles from './SearchMovie.module.css';
+import main from '../../main.module.css';
 import {posterURL} from "../../../constans";
 import {IMovie} from "../../../interfaces";
 
@@ -19,7 +19,7 @@ const SearchMovie: FC<IProps> = ({movie}) => {
     };
 
     return (
-        <div className={styles.SearchMovie} onClick={toDetails}>
+        <div className={main.Movie} onClick={toDetails}>
             <img src={`${posterURL}${poster_path}`} alt={title}/>
             <p>{title}</p>
         </div>

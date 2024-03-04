@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {useNavigate} from "react-router-dom";
 
-import styles from './MovieCard.module.css';
+import main from '../../main.module.css';
 import {IMovie} from "../../../interfaces";
 import {posterURL} from "../../../constans";
 
@@ -18,7 +18,7 @@ const MovieCard: FC<IProps> = ({movie}) => {
     };
 
     return (
-        <div className={styles.MovieCard} onClick={toDetails}
+        <div className={main.Movie} onClick={toDetails}
         >
             <img src={`${posterURL}${poster_path}`} alt={title}/>
             <p>{title}</p>

@@ -2,18 +2,17 @@ import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
-import styles from './MoviesG.module.css';
+import main from '../../main.module.css';
 import {movieService} from "../../../services";
 import {IMovieData} from "../../../interfaces";
-import {usePageQuery} from "../../../hooks";
+import {usePageQuery, useThemeContext} from "../../../hooks";
 import {MovieG} from "../MovieG/MovieG";
 
 const MoviesG = () => {
     const [genreMoviesRes, setGenreMoviesRes] = useState<IMovieData>(null);
+    const {isDarkMode} = useThemeContext();
     const {page, pageChange} = usePageQuery();
     const {id} = useParams();
-
-    console.log(page)
 
     useEffect(() => {
         movieService.getByGenreId(`${page ? page : 1}`, +id).then(({data}) => setGenreMoviesRes(data))
@@ -21,8 +20,8 @@ const MoviesG = () => {
     }, [id, page]);
 
     return (
-        <div className={styles.MoviesG}>
-            <div className={styles.movies}>
+        <div className={main.Wrap}>
+            <div className={`${main.movies} ${!isDarkMode && main.light}`}>
                 {genreMoviesRes?.results && genreMoviesRes.results.map(movie =>
                     <MovieG
                         key={movie.id}

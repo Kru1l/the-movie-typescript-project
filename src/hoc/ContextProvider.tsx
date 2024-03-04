@@ -13,7 +13,7 @@ const ContextProvider: FC<IProps> = ({children}) => {
         palette: {
             mode: 'dark',
             primary: {
-                main: '#ffffff',
+                main: '#DB9F3DFF',
             },
             secondary: {
                 main: '#ff0000',
@@ -25,7 +25,7 @@ const ContextProvider: FC<IProps> = ({children}) => {
         palette: {
             mode: 'light',
             primary: {
-                main: '#3f51b5', // основний колір для світлої теми
+                main: '#DB9F3DFF', // основний колір для світлої теми
             },
             secondary: {
                 main: '#f50057', // додатковий колір для світлої теми
@@ -49,11 +49,11 @@ const ContextProvider: FC<IProps> = ({children}) => {
     };
 
     return (
-            <ThemeContext.Provider value={{theme, setTheme, toggleTheme, isDarkMode, setIsDarkMode}}>
-                <ThemeProvider theme={theme}>
-                    {children}
-                </ThemeProvider>
-            </ThemeContext.Provider>
+        <ThemeContext.Provider value={{theme, setTheme, toggleTheme, isDarkMode, setIsDarkMode}}>
+            <ThemeProvider theme={theme}>
+                {children}
+            </ThemeProvider>
+        </ThemeContext.Provider>
     );
 };
 

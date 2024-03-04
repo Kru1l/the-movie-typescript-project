@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
-import styles from './MoviesList.module.css';
+import main from '../../main.module.css';
 import {IMovieData} from "../../../interfaces";
 import {MovieCard} from "../MovieCard/MovieCard";
 import {usePageQuery, useThemeContext} from "../../../hooks";
@@ -20,8 +20,8 @@ const MoviesList = () => {
     }, [page, theme]);
 
     return (
-        <div className={`${styles.MoviesList}  ${!isDarkMode && styles.light}`}>
-            <div className={styles.movies}>
+        <div className={`${main.Wrap}  ${!isDarkMode && main.light}`}>
+            <div className={main.movies}>
                 {moviesRes?.results.map(movie =>
                     <MovieCard
                         key={movie.id}

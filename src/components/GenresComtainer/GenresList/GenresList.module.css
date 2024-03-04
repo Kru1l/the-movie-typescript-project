@@ -8,3 +8,26 @@
     padding: 8px 6px 0;
     transition: 1s;
 }
+
+.Genres a {
+    background-image: radial-gradient(circle farthest-corner at 10% 50%, rgb(219, 159, 61) 8%, rgba(28, 28, 28, 0.8) 100.2%);
+    color: white;
+}
+
+.Genres a[class='active'] {
+    background: #e5a00d;
+    color: black;
+}
+
+.Genres a:hover {
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(28, 28, 28, 0.8) 17.8%, rgba(219, 159, 61, 0.8) 100.2%);
+}
+
+.light a {
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255, 176, 46, 0.7) 17.8%, rgb(132, 132, 133) 100.2%);
+    color: black;
+}
+
+.light a[class='active'] {
+    color: white;
+}

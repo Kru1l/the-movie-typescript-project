@@ -2,7 +2,7 @@ import {FC, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {Pagination, Stack, ThemeProvider} from "@mui/material";
 
-import styles from './SearchMovies.module.css';
+import main from '../../main.module.css';
 import {IMovieData} from "../../../interfaces";
 import {usePageQuery, useThemeContext} from "../../../hooks";
 import {SearchMovie} from "../SearchMovie/SearchMovie";
@@ -14,7 +14,7 @@ interface IProps {
 
 const SearchMovies: FC<IProps> = () => {
     const [searchRes, setSearchRes] = useState<IMovieData>(null);
-    const {theme} = useThemeContext();
+    const {theme, isDarkMode} = useThemeContext();
     const {page, pageChange} = usePageQuery();
     const {query} = useParams();
 
@@ -30,8 +30,8 @@ const SearchMovies: FC<IProps> = () => {
 
 
     return (
-        <div className={styles.Search}>
-            <div className={styles.movies}>
+        <div className={main.Wrap}>
+            <div className={`${main.movies} ${!isDarkMode && main.light}`}>
                 {searchRes?.results && searchRes.results.map(movie =>
                     <SearchMovie
                         key={movie.id}

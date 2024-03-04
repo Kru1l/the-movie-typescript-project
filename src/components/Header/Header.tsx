@@ -32,6 +32,7 @@ const Header = () => {
                 />
             </ThemeProvider>
 
+            <span id={styles.username}>Kru1l</span>
             <img className={styles.user} src={'https://img.icons8.com/?size=48&id=AZazdsitsrgg&format=png'} alt="User"/>
         </div>
     );
