@@ -12,9 +12,9 @@ const Header = () => {
 
     return (
         <div className={`${styles.Header}  ${!isDarkMode && styles.light}`}>
-
             <img className={styles.logo} src={'https://www.plex.tv/wp-content/themes/plex/assets/img/plex-logo.svg'}
-                 alt={'Plex.tv'}/>
+                 alt={'Plex.tv'}
+                 onClick={() => navigate('/home')}/>
 
             <section className={styles.search}>
                 <SearchForm/>
