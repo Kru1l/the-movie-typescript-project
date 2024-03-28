@@ -12,7 +12,7 @@ const UpMovies = () => {
 
     useEffect(() => {
         document.forms.namedItem('form').reset();
-        movieService.getUpcoming().then(({data}) => setUpMovies(data.results.slice(15)))
+        movieService.getUpcoming().then(({data}) => setUpMovies(data.results.slice(0, 5)))
             .catch((e) => console.error(e));
     }, []);
 

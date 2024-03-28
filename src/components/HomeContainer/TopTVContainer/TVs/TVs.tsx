@@ -12,7 +12,7 @@ const TVs = () => {
 
     useEffect(() => {
         document.forms.namedItem('form').reset();
-        tvService.getTopRated().then(({data}) => setTopTVs(data.results.slice(15)))
+        tvService.getTopRated().then(({data}) => setTopTVs(data.results.slice(0, 5)))
             .catch((e) => console.error(e));
     }, []);
 

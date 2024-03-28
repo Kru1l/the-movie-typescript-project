@@ -12,7 +12,7 @@ const TopMovies = () => {
 
     useEffect(() => {
         document.forms.namedItem('form').reset();
-        movieService.getTopRated().then(({data}) => setTopMovies(data.results.slice(15)))
+        movieService.getTopRated().then(({data}) => setTopMovies(data.results.slice(0, 5)))
             .catch((e) => console.error(e));
     }, []);
 
